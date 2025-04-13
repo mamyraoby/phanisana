@@ -1,0 +1,28 @@
+{
+    "name": "mamyraoby/phanisana",
+    "description": "Phanisana is a PHP library to convert numbers into string in Malagasy language.",
+    "license": "GPL-3.0-only",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "MamyRaoby\\Phanisana\\": "src",
+            "MamyRaoby\\Phanisana\\Test\\": "test"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mamy Raobelina",
+            "email": "mamyraoby@outlook.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.1",
+        "friendsofphp/php-cs-fixer": "^3.75"
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
