@@ -8,8 +8,6 @@ class NumberConverter
 {
     public function toWords(int $number): string
     {
-        $words = [];
-
         if ($number >= 1000000) {
             $hundredThousands = $number % 1000000;
             if ($hundredThousands === 0) {
@@ -83,7 +81,7 @@ class NumberConverter
             return $this->convertDigit($number);
         }
 
-        return trim(implode(' ', $words));
+        return '';
     }
 
     protected function convertDigit(int $number): string
