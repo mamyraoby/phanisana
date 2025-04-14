@@ -8,6 +8,15 @@ class NumberConverter
 {
     public function toWords(int $number): string
     {
+        if ($number >= 1000000000) {
+            $millions = $number % 1000000000;
+            if ($millions === 0) {
+                return $this->convertBillions($number);
+            }
+
+            return $this->toWords($millions) . Dictionary::GLUE_SY->value . $this->convertBillions($number - $millions);
+        }
+
         if ($number >= 1000000) {
             $hundredThousands = $number % 1000000;
             if ($hundredThousands === 0) {
@@ -183,16 +192,48 @@ class NumberConverter
 
     protected function convertMillions(int $number): string
     {
+        $beforeMillions = $number / 1000000;
+
+        if($beforeMillions >= 1 && $beforeMillions <= 9){
+            return match ($number) {
+                1000000   => Dictionary::MILLION->value,
+                2000000   => Dictionary::TWO_MILLION->value,
+                3000000   => Dictionary::THREE_MILLION->value,
+                4000000   => Dictionary::FOUR_MILLION->value,
+                5000000   => Dictionary::FIVE_MILLION->value,
+                6000000   => Dictionary::SIX_MILLION->value,
+                7000000   => Dictionary::SEVEN_MILLION->value,
+                8000000   => Dictionary::EIGHT_MILLION->value,
+                9000000   => Dictionary::NINE_MILLION->value,
+                default   => '',
+            };
+        }
+
+        if($beforeMillions >= 10 && $beforeMillions <= 99)
+        {
+            return $this->toWords($beforeMillions).' tapitrisa';
+        }
+
+        if($beforeMillions >= 100 && $beforeMillions <= 999)
+        {
+            return $this->toWords($beforeMillions).' tapitrisa';
+        }
+
+        return '';
+    }
+
+    protected function convertBillions(int $number): string
+    {
         return match ($number) {
-            1000000   => Dictionary::MILLION->value,
-            2000000   => Dictionary::TWO_MILLION->value,
-            3000000   => Dictionary::THREE_MILLION->value,
-            4000000   => Dictionary::FOUR_MILLION->value,
-            5000000   => Dictionary::FIVE_MILLION->value,
-            6000000   => Dictionary::SIX_MILLION->value,
-            7000000   => Dictionary::SEVEN_MILLION->value,
-            8000000   => Dictionary::EIGHT_MILLION->value,
-            9000000   => Dictionary::NINE_MILLION->value,
+            1000000000   => Dictionary::BILLION->value,
+            2000000000   => Dictionary::TWO_BILLION->value,
+            3000000000   => Dictionary::THREE_BILLION->value,
+            4000000000   => Dictionary::FOUR_BILLION->value,
+            5000000000   => Dictionary::FIVE_BILLION->value,
+            6000000000   => Dictionary::SIX_BILLION->value,
+            7000000000   => Dictionary::SEVEN_BILLION->value,
+            8000000000   => Dictionary::EIGHT_BILLION->value,
+            9000000000   => Dictionary::NINE_BILLION->value,
             default   => '',
         };
     }

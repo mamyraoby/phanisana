@@ -37,6 +37,7 @@ class NumberConverterTest extends TestCase
         $this->assertEquals('efajato', $converter->toWords(400));
         $this->assertEquals('efatra amby efajato', $converter->toWords(404));
         $this->assertEquals('iraika amby folo amby zato', $converter->toWords(111));
+        $this->assertEquals('sivy amby roapolo sy efajato', $converter->toWords(429));
         $this->assertEquals('sivy amby sivifolo sy sivinjato', $converter->toWords(999));
     }
 
@@ -75,6 +76,14 @@ class NumberConverterTest extends TestCase
         $this->assertEquals('iray tapitrisa', $converter->toWords(1000000));
         $this->assertEquals('dimanjato sy dimy arivo sy valo alina sy efatra hetsy sy sivy tapitrisa', $converter->toWords(9485500));
         $this->assertEquals('fito amby enimpolo sy roanjato sy sivy arivo sy roa alina sy efatra hetsy sy telo tapitrisa', $converter->toWords(3429267));
+    }
+
+    public function testBillions()
+    {
+        $converter = new NumberConverter();
+        $this->assertEquals('iray lavitrisa', $converter->toWords(1000000000));
+        $this->assertEquals('dimy arivo sy efatra alina sy telopolo tapitrisa sy sivy lavitrisa', $converter->toWords(9030045000));
+        $this->assertEquals('fito arivo sy enina alina sy roa hetsy sy sivy amby roapolo sy efajato tapitrisa sy telo lavitrisa', $converter->toWords(3429267000));
     }
 
     public function testHelper()
