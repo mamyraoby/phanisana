@@ -76,4 +76,9 @@ class NumberConverterTest extends TestCase
         $this->assertEquals('dimanjato sy dimy arivo sy valo alina sy efatra hetsy sy sivy tapitrisa', $converter->toWords(9485500));
         $this->assertEquals('fito amby enimpolo sy roanjato sy sivy arivo sy roa alina sy efatra hetsy sy telo tapitrisa', $converter->toWords(3429267));
     }
+
+    public function testHelper()
+    {
+        $this->assertEquals('iraika amby folo', phanisana_convert_number(11));
+    }
 }
