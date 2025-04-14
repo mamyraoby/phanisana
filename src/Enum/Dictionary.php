@@ -79,4 +79,14 @@ enum Dictionary: string
     case SEVEN_MILLION = 'fito tapitrisa';
     case EIGHT_MILLION = 'valo tapitrisa';
     case NINE_MILLION  = 'sivy tapitrisa';
+    
+    case BILLION       = 'iray lavitrisa';
+    case TWO_BILLION   = 'roa lavitrisa';
+    case THREE_BILLION = 'telo lavitrisa';
+    case FOUR_BILLION  = 'efatra lavitrisa';
+    case FIVE_BILLION  = 'dimy lavitrisa';
+    case SIX_BILLION   = 'enina lavitrisa';
+    case SEVEN_BILLION = 'fito lavitrisa';
+    case EIGHT_BILLION = 'valo lavitrisa';
+    case NINE_BILLION  = 'sivy lavitrisa';
 }

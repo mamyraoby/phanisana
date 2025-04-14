@@ -29,6 +29,12 @@ echo $converter->toWords(7);       // fito
 echo $converter->toWords(69);      // sivy amby enimpolo
 echo $converter->toWords(2025);    // dimy amby roapolo sy roa arivo
 echo $converter->toWords(3429267); // fito amby enimpolo sy roanjato sy sivy arivo sy roa alina sy efatra hetsy sy telo tapitrisa
-```
+
+// You can also use the global helper function if you've configured autoloading in Composer:
+echo phanisana_convert_number(7);       // fito
+echo phanisana_convert_number(69);      // sivy amby enimpolo
+echo phanisana_convert_number(2025);    // dimy amby roapolo sy roa arivo
+echo phanisana_convert_number(3429267); // fito amby enimpolo sy roanjato sy sivy arivo sy roa alina sy efatra hetsy sy telo tapitrisa
+``` 
 
 This demonstrates how to convert various number ranges into Malagasy words using the `NumberConverter`.
