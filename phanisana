@@ -1,0 +1,51 @@
+#!/usr/bin/env php
+<?php
+
+require 'vendor/autoload.php';
+
+if (php_sapi_name() !== 'cli') {
+    die("This script can only be run from the command line.\n");
+}
+
+if ($argc < 2 || in_array($argv[1], ['-h', '--help'])) {
+    displayHelp();
+    exit(0);
+}
+
+$action = strtolower($argv[1]);
+
+$inputs = array_slice($argv, 2);
+
+switch ($action) {
+    case 'convert':
+        handleConvert($inputs);
+        break;
+    default:
+        echo "Unknown action: $action\n";
+        displayHelp();
+        exit(1);
+}
+
+/**
+ * Display help information
+ */
+function displayHelp() {
+    echo "Usage: php phanisana <action> [inputs...]\n";
+    echo "Available actions:\n";
+    echo "  convert [value]          - Convert a number into words\n";
+    echo "Options:\n";
+    echo "  -h, --help            - Show this help message\n";
+}
+
+/**
+ * Handle number convertion
+ */
+function handleConvert($inputs) {
+    if (empty($inputs) || !is_numeric($inputs[0])) {
+        echo "Invalid input." . PHP_EOL;
+    } else {
+        $result = phanisana_convert_number($inputs[0]);
+        echo PHP_EOL . "Result: " . $result . PHP_EOL;
+    }
+    
+}
