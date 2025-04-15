@@ -8,19 +8,63 @@ class NumberConverter
 {
     public function toWords(int $number): string
     {
-        if ($result = $this->convertWithThreshold($number, 1_000_000_000, fn ($n) => $this->convertBillions($n))) {
-            return $result;
-        }
-        
-        if ($result = $this->convertWithThreshold($number, 1_000_000, fn ($n) => $this->convertMillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 1_000_000_000_000_000_000, fn($n) => $this->convertQuintillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 100_000, fn ($n) => $this->convertHundredThousands($n))) {
+        if ($result = $this->convertWithThreshold($number, 100_000_000_000_000_000, fn($n) => $this->convertHundredQuadrillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 10_000, fn ($n) => $this->convertTenThousands($n))) {
+        if ($result = $this->convertWithThreshold($number, 10_000_000_000_000_000, fn($n) => $this->convertTenQuadrillions($n))) {
+            return $result;
+        }
+
+        if ($result = $this->convertWithThreshold($number, 1_000_000_000_000_000, fn($n) => $this->convertQuadrillions($n))) {
+            return $result;
+        }
+
+        if ($result = $this->convertWithThreshold($number, 100_000_000_000_000, fn($n) => $this->convertHundredTrillions($n))) {
+            return $result;
+        }
+
+        if ($result = $this->convertWithThreshold($number, 10_000_000_000_000, fn($n) => $this->convertTenTrillions($n))) {
+            return $result;
+        }
+
+        if ($result = $this->convertWithThreshold($number, 1_000_000_000_000, fn($n) => $this->convertTrillions($n))) {
+            return $result;
+        }
+
+        if ($result = $this->convertWithThreshold($number, 100_000_000_000, fn($n) => $this->convertHundredBillions($n))) {
+            return $result;
+        }
+
+        if ($result = $this->convertWithThreshold($number, 10_000_000_000, fn($n) => $this->convertTenBillions($n))) {
+            return $result;
+        }
+
+        if ($result = $this->convertWithThreshold($number, 1_000_000_000, fn($n) => $this->convertBillions($n))) {
+            return $result;
+        }
+
+        if ($result = $this->convertWithThreshold($number, 100_000_000, fn($n) => $this->convertHundredMillions($n))) {
+            return $result;
+        }
+
+        if ($result = $this->convertWithThreshold($number, 10_000_000, fn($n) => $this->convertTenMillions($n))) {
+            return $result;
+        }
+
+        if ($result = $this->convertWithThreshold($number, 1_000_000, fn($n) => $this->convertMillions($n))) {
+            return $result;
+        }
+
+        if ($result = $this->convertWithThreshold($number, 100_000, fn($n) => $this->convertHundredThousands($n))) {
+            return $result;
+        }
+
+        if ($result = $this->convertWithThreshold($number, 10_000, fn($n) => $this->convertTenThousands($n))) {
             return $result;
         }
 
@@ -161,8 +205,63 @@ class NumberConverter
         return $this->toWords($number / 1_000_000) . ' ' . Dictionary::MILLION->value;
     }
 
+    protected function convertTenMillions(int $number): string
+    {
+        return $this->toWords($number / 10_000_000) . ' ' . Dictionary::TEN_MILLION->value;
+    }
+
+    protected function convertHundredMillions(int $number): string
+    {
+        return $this->toWords($number / 100_000_000) . ' ' . Dictionary::HUNDRED_MILLION->value;
+    }
+
     protected function convertBillions(int $number): string
     {
         return $this->toWords($number / 1_000_000_000) . ' ' . Dictionary::BILLION->value;
+    }
+
+    protected function convertTenBillions(int $number): string
+    {
+        return $this->toWords($number / 10_000_000_000) . ' ' . Dictionary::TEN_BILLION->value;
+    }
+
+    protected function convertHundredBillions(int $number): string
+    {
+        return $this->toWords($number / 100_000_000_000) . ' ' . Dictionary::HUNDRED_BILLION->value;
+    }
+
+    protected function convertTrillions(int $number): string
+    {
+        return $this->toWords($number / 1_000_000_000_000) . ' ' . Dictionary::TRILLION->value;
+    }
+
+    protected function convertTenTrillions(int $number): string
+    {
+        return $this->toWords($number / 10_000_000_000_000) . ' ' . Dictionary::TEN_TRILLION->value;
+    }
+
+    protected function convertHundredTrillions(int $number): string
+    {
+        return $this->toWords($number / 100_000_000_000_000) . ' ' . Dictionary::HUNDRED_TRILLION->value;
+    }
+
+    protected function convertQuadrillions(int $number): string
+    {
+        return $this->toWords($number / 1_000_000_000_000_000) . ' ' . Dictionary::QUADRILLION->value;
+    }
+
+    protected function convertTenQuadrillions(int $number): string
+    {
+        return $this->toWords($number / 10_000_000_000_000_000) . ' ' . Dictionary::TEN_QUADRILLION->value;
+    }
+
+    protected function convertHundredQuadrillions(int $number): string
+    {
+        return $this->toWords($number / 100_000_000_000_000_000) . ' ' . Dictionary::HUNDRED_QUADRILLION->value;
+    }
+
+    protected function convertQuintillions(int $number): string
+    {
+        return $this->toWords($number / 1_000_000_000_000_000_000) . ' ' . Dictionary::QUINTILLION->value;
     }
 }
