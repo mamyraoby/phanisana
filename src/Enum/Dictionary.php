@@ -40,53 +40,9 @@ enum Dictionary: string
     case EIGHT_HUNDRED = 'valonjato';
     case NINE_HUNDRED  = 'sivinjato';
 
-    case THOUSAND       = 'arivo';
-    case TWO_THOUSAND   = 'roa arivo';
-    case THREE_THOUSAND = 'telo arivo';
-    case FOUR_THOUSAND  = 'efatra arivo';
-    case FIVE_THOUSAND  = 'dimy arivo';
-    case SIX_THOUSAND   = 'enina arivo';
-    case SEVEN_THOUSAND = 'fito arivo';
-    case EIGHT_THOUSAND = 'valo arivo';
-    case NINE_THOUSAND  = 'sivy arivo';
-
-    case TEN_THOUSAND     = 'iray alina';
-    case TWENTY_THOUSAND  = 'roa alina';
-    case THIRTY_THOUSAND  = 'telo alina';
-    case FORTY_THOUSAND   = 'efatra alina';
-    case FIFTY_THOUSAND   = 'dimy alina';
-    case SIXTY_THOUSAND   = 'enina alina';
-    case SEVENTY_THOUSAND = 'fito alina';
-    case EIGHTY_THOUSAND  = 'valo alina';
-    case NINETY_THOUSAND  = 'sivy alina';
-
-    case ONE_HUNDRED_THOUSAND   = 'iray hetsy';
-    case TWO_HUNDRED_THOUSAND   = 'roa hetsy';
-    case THREE_HUNDRED_THOUSAND = 'telo hetsy';
-    case FOUR_HUNDRED_THOUSAND  = 'efatra hetsy';
-    case FIVE_HUNDRED_THOUSAND  = 'dimy hetsy';
-    case SIX_HUNDRED_THOUSAND   = 'enina hetsy';
-    case SEVEN_HUNDRED_THOUSAND = 'fito hetsy';
-    case EIGHT_HUNDRED_THOUSAND = 'valo hetsy';
-    case NINE_HUNDRED_THOUSAND  = 'sivy hetsy';
-
-    case MILLION       = 'iray tapitrisa';
-    case TWO_MILLION   = 'roa tapitrisa';
-    case THREE_MILLION = 'telo tapitrisa';
-    case FOUR_MILLION  = 'efatra tapitrisa';
-    case FIVE_MILLION  = 'dimy tapitrisa';
-    case SIX_MILLION   = 'enina tapitrisa';
-    case SEVEN_MILLION = 'fito tapitrisa';
-    case EIGHT_MILLION = 'valo tapitrisa';
-    case NINE_MILLION  = 'sivy tapitrisa';
-    
-    case BILLION       = 'iray lavitrisa';
-    case TWO_BILLION   = 'roa lavitrisa';
-    case THREE_BILLION = 'telo lavitrisa';
-    case FOUR_BILLION  = 'efatra lavitrisa';
-    case FIVE_BILLION  = 'dimy lavitrisa';
-    case SIX_BILLION   = 'enina lavitrisa';
-    case SEVEN_BILLION = 'fito lavitrisa';
-    case EIGHT_BILLION = 'valo lavitrisa';
-    case NINE_BILLION  = 'sivy lavitrisa';
+    case THOUSAND         = 'arivo';
+    case TEN_THOUSAND     = 'alina';
+    case HUNDRED_THOUSAND = 'hetsy';
+    case MILLION          = 'tapitrisa';
+    case BILLION          = 'lavitrisa';
 }

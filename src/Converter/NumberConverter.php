@@ -144,97 +144,30 @@ class NumberConverter
 
     protected function convertThousands(int $number): string
     {
-        return match ($number) {
-            1000    => Dictionary::THOUSAND->value,
-            2000    => Dictionary::TWO_THOUSAND->value,
-            3000    => Dictionary::THREE_THOUSAND->value,
-            4000    => Dictionary::FOUR_THOUSAND->value,
-            5000    => Dictionary::FIVE_THOUSAND->value,
-            6000    => Dictionary::SIX_THOUSAND->value,
-            7000    => Dictionary::SEVEN_THOUSAND->value,
-            8000    => Dictionary::EIGHT_THOUSAND->value,
-            9000    => Dictionary::NINE_THOUSAND->value,
-            default => '',
-        };
+        if ($number > 1000) {
+            return $this->toWords($number / 1000) . ' ' . Dictionary::THOUSAND->value;
+        }
+
+        return Dictionary::THOUSAND->value;
     }
 
     protected function convertTenThousands(int $number): string
     {
-        return match ($number) {
-            10000   => Dictionary::TEN_THOUSAND->value,
-            20000   => Dictionary::TWENTY_THOUSAND->value,
-            30000   => Dictionary::THIRTY_THOUSAND->value,
-            40000   => Dictionary::FORTY_THOUSAND->value,
-            50000   => Dictionary::FIFTY_THOUSAND->value,
-            60000   => Dictionary::SIXTY_THOUSAND->value,
-            70000   => Dictionary::SEVENTY_THOUSAND->value,
-            80000   => Dictionary::EIGHTY_THOUSAND->value,
-            90000   => Dictionary::NINETY_THOUSAND->value,
-            default => '',
-        };
+        return $this->toWords($number / 10000) . ' ' . Dictionary::TEN_THOUSAND->value;
     }
 
     protected function convertHundredThousands(int $number): string
     {
-        return match ($number) {
-            100000   => Dictionary::ONE_HUNDRED_THOUSAND->value,
-            200000   => Dictionary::TWO_HUNDRED_THOUSAND->value,
-            300000   => Dictionary::THREE_HUNDRED_THOUSAND->value,
-            400000   => Dictionary::FOUR_HUNDRED_THOUSAND->value,
-            500000   => Dictionary::FIVE_HUNDRED_THOUSAND->value,
-            600000   => Dictionary::SIX_HUNDRED_THOUSAND->value,
-            700000   => Dictionary::SEVEN_HUNDRED_THOUSAND->value,
-            800000   => Dictionary::EIGHT_HUNDRED_THOUSAND->value,
-            900000   => Dictionary::NINE_HUNDRED_THOUSAND->value,
-            default  => '',
-        };
+        return $this->toWords($number / 100000) . ' ' . Dictionary::HUNDRED_THOUSAND->value;
     }
 
     protected function convertMillions(int $number): string
     {
-        $beforeMillions = $number / 1000000;
-
-        if($beforeMillions >= 1 && $beforeMillions <= 9){
-            return match ($number) {
-                1000000   => Dictionary::MILLION->value,
-                2000000   => Dictionary::TWO_MILLION->value,
-                3000000   => Dictionary::THREE_MILLION->value,
-                4000000   => Dictionary::FOUR_MILLION->value,
-                5000000   => Dictionary::FIVE_MILLION->value,
-                6000000   => Dictionary::SIX_MILLION->value,
-                7000000   => Dictionary::SEVEN_MILLION->value,
-                8000000   => Dictionary::EIGHT_MILLION->value,
-                9000000   => Dictionary::NINE_MILLION->value,
-                default   => '',
-            };
-        }
-
-        if($beforeMillions >= 10 && $beforeMillions <= 99)
-        {
-            return $this->toWords($beforeMillions).' tapitrisa';
-        }
-
-        if($beforeMillions >= 100 && $beforeMillions <= 999)
-        {
-            return $this->toWords($beforeMillions).' tapitrisa';
-        }
-
-        return '';
+        return $this->toWords($number / 1000000) . ' ' . Dictionary::MILLION->value;
     }
-
+    
     protected function convertBillions(int $number): string
     {
-        return match ($number) {
-            1000000000   => Dictionary::BILLION->value,
-            2000000000   => Dictionary::TWO_BILLION->value,
-            3000000000   => Dictionary::THREE_BILLION->value,
-            4000000000   => Dictionary::FOUR_BILLION->value,
-            5000000000   => Dictionary::FIVE_BILLION->value,
-            6000000000   => Dictionary::SIX_BILLION->value,
-            7000000000   => Dictionary::SEVEN_BILLION->value,
-            8000000000   => Dictionary::EIGHT_BILLION->value,
-            9000000000   => Dictionary::NINE_BILLION->value,
-            default   => '',
-        };
+        return $this->toWords($number / 1000000000) . ' ' . Dictionary::BILLION->value;
     }
 }
