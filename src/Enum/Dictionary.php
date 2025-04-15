@@ -40,9 +40,20 @@ enum Dictionary: string
     case EIGHT_HUNDRED = 'valonjato';
     case NINE_HUNDRED  = 'sivinjato';
 
-    case THOUSAND         = 'arivo';
-    case TEN_THOUSAND     = 'alina';
-    case HUNDRED_THOUSAND = 'hetsy';
-    case MILLION          = 'tapitrisa';
-    case BILLION          = 'lavitrisa';
+    case THOUSAND            = 'arivo';
+    case TEN_THOUSAND        = 'alina';
+    case HUNDRED_THOUSAND    = 'hetsy';
+    case MILLION             = 'tapitrisa';
+    case TEN_MILLION         = 'safatsiroa';
+    case HUNDRED_MILLION     = 'tsitamboisa';
+    case BILLION             = 'lavitrisa';
+    case TEN_BILLION         = 'alinkisa';
+    case HUNDRED_BILLION     = 'tsipesimpesina';
+    case TRILLION            = 'tsitokotsiforohana';
+    case TEN_TRILLION        = 'tsitanoanoa';
+    case HUNDRED_TRILLION    = 'safatsiroafaharoa';
+    case QUADRILLION         = 'tsitamboisafaharoa';
+    case TEN_QUADRILLION     = 'lavitrisafaharoa';
+    case HUNDRED_QUADRILLION = 'alinkisafaharoa';
+    case QUINTILLION         = 'tsipesimpesinafaharoa';
 }

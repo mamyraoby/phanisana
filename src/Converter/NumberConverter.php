@@ -8,82 +8,62 @@ class NumberConverter
 {
     public function toWords(int $number): string
     {
-        if ($number >= 1000000000) {
-            $millions = $number % 1000000000;
-            if ($millions === 0) {
-                return $this->convertBillions($number);
-            }
-
-            return $this->toWords($millions) . Dictionary::GLUE_SY->value . $this->convertBillions($number - $millions);
+        if ($result = $this->convertWithThreshold($number, 1_000_000_000, fn ($n) => $this->convertBillions($n))) {
+            return $result;
+        }
+        
+        if ($result = $this->convertWithThreshold($number, 1_000_000, fn ($n) => $this->convertMillions($n))) {
+            return $result;
         }
 
-        if ($number >= 1000000) {
-            $hundredThousands = $number % 1000000;
-            if ($hundredThousands === 0) {
-                return $this->convertMillions($number);
-            }
-
-            return $this->toWords($hundredThousands) . Dictionary::GLUE_SY->value . $this->convertMillions($number - $hundredThousands);
+        if ($result = $this->convertWithThreshold($number, 100_000, fn ($n) => $this->convertHundredThousands($n))) {
+            return $result;
         }
 
-        if ($number >= 100000) {
-            $tenThousands = $number % 100000;
-            if ($tenThousands === 0) {
-                return $this->convertHundredThousands($number);
-            }
-
-            return $this->toWords($tenThousands) . Dictionary::GLUE_SY->value . $this->convertHundredThousands($number - $tenThousands);
+        if ($result = $this->convertWithThreshold($number, 10_000, fn ($n) => $this->convertTenThousands($n))) {
+            return $result;
         }
 
-        if ($number >= 10000) {
-            $thousands = $number % 10000;
-            if ($thousands === 0) {
-                return $this->convertTenThousands($number);
-            }
+        if ($number >= 1_000) {
+            $remainder = $number % 1_000;
 
-            return $this->toWords($thousands) . Dictionary::GLUE_SY->value . $this->convertTenThousands($number - $thousands);
-        }
-
-        if ($number >= 1000) {
-            $hundreds = $number % 1000;
-
-            if ($hundreds === 0) {
+            if ($remainder === 0) {
                 return $this->convertThousands($number);
             }
 
-            return ($hundreds === 1)
-                ? Dictionary::ONE->value . Dictionary::GLUE_SY->value . $this->convertThousands($number - $hundreds)
-                : $this->toWords($hundreds) . Dictionary::GLUE_SY->value . $this->convertThousands($number - $hundreds);
+            return ($remainder === 1)
+                ? Dictionary::ONE->value . Dictionary::GLUE_SY->value . $this->convertThousands($number - $remainder)
+                : $this->toWords($remainder) . Dictionary::GLUE_SY->value . $this->convertThousands($number - $remainder);
         }
 
         if ($number >= 100) {
-            $tens = $number % 100;
+            $remainder = $number % 100;
 
-            if ($tens === 0) {
+            if ($remainder === 0) {
                 return $this->convertHundreds($number);
             }
 
-            if ($tens === 1) {
-                return Dictionary::CUSTOM_ONE->value . Dictionary::GLUE_AMBY->value . $this->convertHundreds($number - $tens);
+            if ($remainder === 1) {
+                return Dictionary::CUSTOM_ONE->value . Dictionary::GLUE_AMBY->value . $this->convertHundreds($number - $remainder);
             }
 
-            if ($number < 200 || $tens < 10) {
-                return $this->toWords($tens) . Dictionary::GLUE_AMBY->value . $this->convertHundreds($number - $tens);
+            if ($number < 200 || $remainder < 10) {
+                return $this->toWords($remainder) . Dictionary::GLUE_AMBY->value . $this->convertHundreds($number - $remainder);
             }
 
-            return $this->toWords($tens) . Dictionary::GLUE_SY->value . $this->convertHundreds($number - $tens);
+            return $this->toWords($remainder) . Dictionary::GLUE_SY->value . $this->convertHundreds($number - $remainder);
         }
 
         if ($number >= 10) {
-            $digit = $number % 10;
+            $remainder = $number % 10;
 
-            if ($digit === 0) {
+            if ($remainder === 0) {
                 return $this->convertTens($number);
             }
 
-            return ($digit === 1)
-                ? Dictionary::CUSTOM_ONE->value . Dictionary::GLUE_AMBY->value . $this->convertTens($number - $digit)
-                : $this->convertDigit($digit) . Dictionary::GLUE_AMBY->value . $this->convertTens($number - $digit);
+            return ($remainder === 1)
+                ? Dictionary::CUSTOM_ONE->value . Dictionary::GLUE_AMBY->value . $this->convertTens($number - $remainder)
+                : $this->convertDigit($remainder) . Dictionary::GLUE_AMBY->value . $this->convertTens($number - $remainder);
         }
 
         if ($number >= 0) {
@@ -91,6 +71,21 @@ class NumberConverter
         }
 
         return '';
+    }
+
+    protected function convertWithThreshold(int $number, int $threshold, callable $converter): ?string
+    {
+        if ($number < $threshold) {
+            return null;
+        }
+
+        $remainder = $number % $threshold;
+
+        if ($remainder === 0) {
+            return $converter($number);
+        }
+
+        return $this->toWords($remainder) . Dictionary::GLUE_SY->value . $converter($number - $remainder);
     }
 
     protected function convertDigit(int $number): string
@@ -144,8 +139,8 @@ class NumberConverter
 
     protected function convertThousands(int $number): string
     {
-        if ($number > 1000) {
-            return $this->toWords($number / 1000) . ' ' . Dictionary::THOUSAND->value;
+        if ($number > 1_000) {
+            return $this->toWords($number / 1_000) . ' ' . Dictionary::THOUSAND->value;
         }
 
         return Dictionary::THOUSAND->value;
@@ -153,21 +148,21 @@ class NumberConverter
 
     protected function convertTenThousands(int $number): string
     {
-        return $this->toWords($number / 10000) . ' ' . Dictionary::TEN_THOUSAND->value;
+        return $this->toWords($number / 10_000) . ' ' . Dictionary::TEN_THOUSAND->value;
     }
 
     protected function convertHundredThousands(int $number): string
     {
-        return $this->toWords($number / 100000) . ' ' . Dictionary::HUNDRED_THOUSAND->value;
+        return $this->toWords($number / 100_000) . ' ' . Dictionary::HUNDRED_THOUSAND->value;
     }
 
     protected function convertMillions(int $number): string
     {
-        return $this->toWords($number / 1000000) . ' ' . Dictionary::MILLION->value;
+        return $this->toWords($number / 1_000_000) . ' ' . Dictionary::MILLION->value;
     }
-    
+
     protected function convertBillions(int $number): string
     {
-        return $this->toWords($number / 1000000000) . ' ' . Dictionary::BILLION->value;
+        return $this->toWords($number / 1_000_000_000) . ' ' . Dictionary::BILLION->value;
     }
 }
