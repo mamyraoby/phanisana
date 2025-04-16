@@ -56,6 +56,4 @@ enum Dictionary: string
     case TEN_QUADRILLION     = 'lavitrisafaharoa';
     case HUNDRED_QUADRILLION = 'alinkisafaharoa';
     case QUINTILLION         = 'tsipesimpesinafaharoa';
-
-    case YEAR = 'taona';
 }
