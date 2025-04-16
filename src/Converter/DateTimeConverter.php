@@ -51,7 +51,7 @@ class DateTimeConverter
     /**
      * @throws \MamyRaoby\Phanisana\Exceptions\InvalidTimeFormatException
      */
-    public function convertTime(DateTimeInterface|string $time): string
+    public function convertTime(DateTimeInterface|string $time, string $format): string
     {
         if ($time instanceof DateTimeInterface) {
             $time = $time->format('H:i:s');
@@ -99,6 +99,14 @@ class DateTimeConverter
         }
 
         throw new InvalidTimeFormatException();
+    }
+
+    public function convertDateTime(DateTimeInterface $datetime, string $dateFormat, string $timeFormat): string
+    {
+        $date = $this->convertDate($datetime, $dateFormat);
+        $time = $this->convertTime($datetime, $timeFormat);
+
+        return $date . DateDictionary::GLUE_AT->value . $time;
     }
 
     protected function getHourSuffix(int $hour): string
