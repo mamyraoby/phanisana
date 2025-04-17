@@ -1,5 +1,7 @@
+site_name: phanisana - PHP library to convert number, date and time into Malagasy language
 site_url: !ENV READTHEDOCS_CANONICAL_URL
 theme:
   name: material
+  custom_dir: docs/overrides
 extra_javascript:
-    - javascript/readthedocs.js
+  - javascripts/readthedocs.js
