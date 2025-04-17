@@ -36,17 +36,17 @@ class DateTimeConverterTest extends TestCase
     {
         $converter = new DateTimeConverter();
 
-        $this->assertEquals('valo ora maraina sy folo minitra', $converter->convertTime('08:10'));
+        $this->assertEquals('valo ora maraina sy folo minitra', $converter->convertTime('08:10', DateTimeConverter::FORMAT_TIME_LONG_TEXT));
 
-        $this->assertEquals('roa amby folo ora alina', $converter->convertTime('00:00'));
-        $this->assertEquals('roa amby folo ora atoandro', $converter->convertTime('12:00'));
+        $this->assertEquals('roa amby folo ora alina', $converter->convertTime('00:00', DateTimeConverter::FORMAT_TIME_LONG_TEXT));
+        $this->assertEquals('roa amby folo ora atoandro', $converter->convertTime('12:00', DateTimeConverter::FORMAT_TIME_LONG_TEXT));
 
-        $this->assertEquals('telo ora maraina sy dimy amby folo minitra sy telopolo segondra', $converter->convertTime('03:15:30'));
-        $this->assertEquals('iray ora atoandro sy sivy amby telopolo minitra', $converter->convertTime('13:39'));
+        $this->assertEquals('telo ora maraina sy dimy amby folo minitra sy telopolo segondra', $converter->convertTime('03:15:30', DateTimeConverter::FORMAT_TIME_LONG_TEXT));
+        $this->assertEquals('iray ora atoandro sy sivy amby telopolo minitra', $converter->convertTime('13:39', DateTimeConverter::FORMAT_TIME_LONG_TEXT));
 
-        $this->assertEquals('enina ora hariva sy efatra amby folo minitra sy enina amby dimampolo segondra', $converter->convertTime('18:14:56'));
+        $this->assertEquals('enina ora hariva sy efatra amby folo minitra sy enina amby dimampolo segondra', $converter->convertTime('18:14:56', DateTimeConverter::FORMAT_TIME_LONG_TEXT));
 
         $this->expectException(InvalidTimeFormatException::class);
-        $this->assertEquals('valo ora sy sivy folo minitra', $converter->convertTime('08:90'));
+        $this->assertEquals('valo ora sy sivy folo minitra', $converter->convertTime('08:90', DateTimeConverter::FORMAT_TIME_LONG_TEXT));
     }
 }

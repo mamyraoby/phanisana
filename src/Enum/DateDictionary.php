@@ -12,4 +12,6 @@ enum DateDictionary: string {
     case DAYLIGHT  = 'atoandro';
     case AFTERNOON = 'hariva';
     case NIGHT     = 'alina';
+
+    case GLUE_AT = 'tamin\'ny';
 }
