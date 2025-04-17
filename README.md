@@ -16,6 +16,7 @@ composer require mamyraoby/phanisana
 
 ## 🚀 Usage
 
+### Number Converter
 First, make sure Composer’s autoloader is included:
 
 ```php
@@ -25,16 +26,15 @@ use MamyRaoby\Phanisana\Converter\NumberConverter;
 
 $converter = new NumberConverter();
 
-echo $converter->toWords(7);            // fito
-echo $converter->toWords(69);           // sivy amby enimpolo
-echo $converter->toWords(2025);         // dimy amby roapolo sy roa arivo
-echo $converter->toWords(3429267);      // fito amby enimpolo sy roanjato sy sivy arivo sy roa alina sy efatra hetsy sy telo tapitrisa
-echo $converter->toWords(1234567890);   // a more complex example with billions (lavitrisa)
+echo $converter->toWords(7); // fito
+echo $converter->toWords(2025); // dimy amby roapolo sy roa arivo
 
-// Or use the global helper function (requires Composer autoloading):
-echo phanisana_convert_number(7);
-echo phanisana_convert_number(2025);
+// Or use the global helper function:
+echo phanisana_convert_number(7); // fito
+echo phanisana_convert_number(2025); // dimy amby roapolo sy roa arivo
 ```
+
+### Date Converter
 
 ---
 
