@@ -85,7 +85,7 @@ class NumberConverterTest extends TestCase
         $this->assertEquals('dimy arivo sy efatra alina sy telo safatsiroa sy sivy lavitrisa', $converter->toWords(9030045000));
         $this->assertEquals('fito arivo sy enina alina sy roa hetsy sy sivy tapitrisa sy roa safatsiroa sy efatra tsitamboisa sy telo lavitrisa', $converter->toWords(3429267000));
     }
-    
+
     public function testMaxSupportedNumber()
     {
         $converter = new NumberConverter();

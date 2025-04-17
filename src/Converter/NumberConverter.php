@@ -8,63 +8,63 @@ class NumberConverter
 {
     public function toWords(int $number): string
     {
-        if ($result = $this->convertWithThreshold($number, 1_000_000_000_000_000_000, fn($n) => $this->convertQuintillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 1_000_000_000_000_000_000, fn ($n) => $this->convertQuintillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 100_000_000_000_000_000, fn($n) => $this->convertHundredQuadrillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 100_000_000_000_000_000, fn ($n) => $this->convertHundredQuadrillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 10_000_000_000_000_000, fn($n) => $this->convertTenQuadrillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 10_000_000_000_000_000, fn ($n) => $this->convertTenQuadrillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 1_000_000_000_000_000, fn($n) => $this->convertQuadrillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 1_000_000_000_000_000, fn ($n) => $this->convertQuadrillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 100_000_000_000_000, fn($n) => $this->convertHundredTrillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 100_000_000_000_000, fn ($n) => $this->convertHundredTrillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 10_000_000_000_000, fn($n) => $this->convertTenTrillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 10_000_000_000_000, fn ($n) => $this->convertTenTrillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 1_000_000_000_000, fn($n) => $this->convertTrillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 1_000_000_000_000, fn ($n) => $this->convertTrillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 100_000_000_000, fn($n) => $this->convertHundredBillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 100_000_000_000, fn ($n) => $this->convertHundredBillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 10_000_000_000, fn($n) => $this->convertTenBillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 10_000_000_000, fn ($n) => $this->convertTenBillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 1_000_000_000, fn($n) => $this->convertBillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 1_000_000_000, fn ($n) => $this->convertBillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 100_000_000, fn($n) => $this->convertHundredMillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 100_000_000, fn ($n) => $this->convertHundredMillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 10_000_000, fn($n) => $this->convertTenMillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 10_000_000, fn ($n) => $this->convertTenMillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 1_000_000, fn($n) => $this->convertMillions($n))) {
+        if ($result = $this->convertWithThreshold($number, 1_000_000, fn ($n) => $this->convertMillions($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 100_000, fn($n) => $this->convertHundredThousands($n))) {
+        if ($result = $this->convertWithThreshold($number, 100_000, fn ($n) => $this->convertHundredThousands($n))) {
             return $result;
         }
 
-        if ($result = $this->convertWithThreshold($number, 10_000, fn($n) => $this->convertTenThousands($n))) {
+        if ($result = $this->convertWithThreshold($number, 10_000, fn ($n) => $this->convertTenThousands($n))) {
             return $result;
         }
 

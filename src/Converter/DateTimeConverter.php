@@ -13,7 +13,6 @@ class DateTimeConverter
     public const FORMAT_DATE_LONG_TEXT   = 'DATE_LONG_TEXT';
     public const FORMAT_DATE_MEDIUM_TEXT = 'DATE_MEDIUM_TEXT';
     public const FORMAT_DATE_TEXT        = 'DATE_TEXT';
-
     public const FORMAT_TIME_LONG_TEXT   = 'TIME_LONG_TEXT';
 
     public function convertDate(DateTimeInterface $date, string $format): string
@@ -113,24 +112,24 @@ class DateTimeConverter
     {
         $suffix = '';
 
-        if (in_array($hour, range(1, 9))) {
+        if (in_array($hour, range(1, 10))) {
             $suffix = DateDictionary::MORNING->value;
         }
 
-        if (in_array($hour, range(10, 14))) {
-            $suffix = DateDictionary::DAYLIGHT->value;
+        if (in_array($hour, range(11, 13))) {
+            $suffix = DateDictionary::MIDDAY->value;
         }
 
-        if (in_array($hour, range(15, 18))) {
+        if (in_array($hour, range(14, 16))) {
             $suffix = DateDictionary::AFTERNOON->value;
         }
 
-        if (in_array($hour, range(19, 23))) {
-            $suffix = DateDictionary::NIGHT->value;
+        if (in_array($hour, range(17, 23))) {
+            $suffix = DateDictionary::EVENING->value;
         }
 
         if ($hour === 0) {
-            $suffix        = DateDictionary::NIGHT->value;
+            $suffix = DateDictionary::NIGHT->value;
         }
 
         return $suffix;
