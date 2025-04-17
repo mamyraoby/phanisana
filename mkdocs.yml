@@ -5,3 +5,8 @@ theme:
   custom_dir: docs/overrides
 extra_javascript:
   - javascripts/readthedocs.js
+nav:
+  - 'Introduction': 'index.md'
+  - 'Installation': 'installation.md'
+  - 'Usages':
+    - 'Number Converter': 'usages/number.md'

@@ -1,6 +1,6 @@
 {
     "name": "mamyraoby/phanisana",
-    "description": "Phanisana is a PHP library to convert numbers into string in Malagasy language.",
+    "description": "Phanisana is a powerful PHP library that transforms numbers, dates, and times into their full-text equivalents in the Malagasy 🇲🇬 language. Whether you're localizing applications, building educational tools, or creating systems with Malagasy users in mind, Phanisana offers a reliable and intuitive solution",
     "license": "GPL-3.0-only",
     "type": "library",
     "autoload": {
