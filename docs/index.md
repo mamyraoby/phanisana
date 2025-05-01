@@ -12,7 +12,7 @@ The name **Phanisana** is a creative fusion of **PHP**, the programming language
   - Millions (*tapitrisa*)
   - Billions (*lavitrisa*)
   - Trillions (*arivo lavitrisa*) and beyond.
-- Easy-to-use API with clean and expressive syntax.
+- Easy-to-use library with clean and expressive syntax.
 - Designed with extensibility in mind for future date/time support.
 
 ## 🚀 Getting Started

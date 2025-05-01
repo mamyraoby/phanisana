@@ -38,4 +38,4 @@ require 'vendor/autoload.php';
 
 You’re now ready to start using **Phanisana**! 🎉
 
-For usage examples and advanced configuration, check out the [Usage Guide](./usage.md).
+For usage examples and advanced configuration, check out the [Usage Guide](./usages/number).
