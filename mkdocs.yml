@@ -10,3 +10,4 @@ nav:
   - 'Installation': 'installation.md'
   - 'Usages':
     - 'Number Converter': 'usages/number.md'
+    - 'Date and Time Converter': 'usages/datetime.md'
